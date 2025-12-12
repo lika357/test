@@ -15,7 +15,7 @@ typedef struct {
     bool garbage_chute;  
     int apartments;    
     int floors;         
-    float average_apartment_area; 
-} Building;
+    double average_apartment_area; 
+} building;
 
 #endif
