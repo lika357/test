@@ -13,7 +13,6 @@ building* vector_begin(vector* v);
 building* vector_end(vector* v) ;
 building* vector_next(vector* v, building* current);
 building* vector_to(vector* v, building* current);
-static void vector_resize(vector* v, int new_max);
 void vector_push_back(vector* v, building* b);
 void vector_insert(vector* v, int index, building* b);
 void vector_push_front(vector* v, building* b);
