@@ -43,7 +43,12 @@ static void vector_resize(vector* v, int new_max) {
 }
 void vector_push_back(vector* v, building* b) {
     if (v->size >= v->max) {
-        int new_max1 = v->max * 2;
+     int new_max1;
+    if (v->max == 0) {
+    new_max1= 4;
+    } else {
+    new_max1 = v->max * 2;
+}
         vector_resize(v, new_max1);
     }
     v->data[v->size] = *b;
@@ -53,7 +58,12 @@ void vector_insert(vector* v, int index, building* b) {
     if (index < 0 || index > v->size) return;
     
     if (v->size >= v->max) {
-        int new_max1 = v->max * 2;
+        int new_max1;
+    if (v->max == 0) {
+    new_max1 = 4;
+    } else {
+    new_max1 = v->max * 2;
+    } 
         vector_resize(v, new_max1);
     }
     
