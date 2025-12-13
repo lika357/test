@@ -90,7 +90,9 @@ void vector_pop_front(vector* v) {
     vector_remove(v, 0);
 }
 void vector_pop_back(vector* v) {
+    if (v->size > 0) {
      v->size--;
+    }
 }
 void vector_swap(vector* v, int i, int j) {
     if (i < 0 || i >= v->size || j < 0 || j >= v->size) return;
