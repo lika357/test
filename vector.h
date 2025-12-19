@@ -1,5 +1,6 @@
 #pragma once
 #include "building.h"
+#include <stddef.h>
 typedef struct {
     building* data;
     int size;
@@ -20,5 +21,5 @@ void vector_pop_front(vector* v);
 void vector_pop_back(vector* v) ;
 void vector_swap(vector* v, int i, int j);
 void vector_clear(vector* v) ;
-void vector_from_array(vector* v, building* array, int n) ;
+void vector_from_array(vector* v, building* array, size_t n) ;
 building* vector_to_array(vector* v);

@@ -107,10 +107,10 @@ void vector_clear(vector* v) {
     v->size = 0;
     v->max = 0;
 }
-void vector_from_array(vector* v, building* array, int n) {
+void vector_from_array(vector* v, building* b, size_t n) {
     vector_clear(v);
     for (int i = 0; i < n; i++) {
-        vector_push_back(v, &array[i]);
+        vector_push_back(v, &b[i]);
     }
 }
 

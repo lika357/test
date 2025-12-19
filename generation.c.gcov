@@ -1,0 +1,47 @@
+        -:    0:Source:generation.c
+        -:    0:Graph:generation.gcno
+        -:    0:Data:-
+        -:    0:Runs:0
+        -:    1:#include "generation.h"
+        -:    2:#include <stdlib.h>
+        -:    3:#include <string.h>
+        -:    4:#include <time.h>
+        -:    5:
+    #####:    6:building* generation_building(size_t n) {
+    #####:    7:    char* dev[] = {
+        -:    8:        "ПИК", "ГК Самолет", "ГК A101", "MR Group", "ДОНСТРОЙ", 
+        -:    9:        "ГК ФСК", "Level Group", "Группа ЛСР", "ГК АБСОЛЮТ", 
+        -:   10:        "ГК Гранель", "Брусника", "Seven Suns Development", 
+        -:   11:        "Фонд реновации", "TEKTA GROUP", "ГК Главстрой"
+        -:   12:    };
+        -:   13:    
+    #####:   14:    char* district[] = {
+        -:   15:        "9-й квартал Новых Черёмушек", "Бусиново", "Востряково", 
+        -:   16:        "Гавриково", "Дангауэровка", "Загорье", "Ленинские горы", 
+        -:   17:        "Матвеевское", "Новоподрезково", "Олимпийская деревня", 
+        -:   18:        "Район Песчаных улиц", "Рублёво-Архангельское", "Чечёра", 
+        -:   19:        "Щербинка", "Южное Измайлово"
+        -:   20:    };
+        -:   21: 
+    #####:   22:    building* b = malloc(n * sizeof(building));
+        -:   23:    
+    #####:   24:    if (!b) {
+    #####:   25:        return NULL;  
+        -:   26:    }
+        -:   27:    
+    #####:   28:    srand(time(NULL));
+        -:   29:    
+    #####:   30:    for (int i = 0; i < n; i++) {
+    #####:   31:        strcpy(b[i].developer, dev[rand() % 15]);
+    #####:   32:        strcpy(b[i].microdistrict, district[rand() % 15]);
+    #####:   33:        b[i].type = rand() % 3;
+    #####:   34:        b[i].year = 1900 + rand() % 125;
+    #####:   35:        b[i].elevator = rand() % 2;
+    #####:   36:        b[i].garbage_chute = rand() % 2;
+    #####:   37:        b[i].apartments = 50 + rand() % 500;
+    #####:   38:        b[i].floors = 5 + rand() % 20;
+    #####:   39:        b[i].average_apartment_area = 40.0 + (double)rand() / RAND_MAX * 20.0;
+        -:   40:    }
+        -:   41:    
+    #####:   42:    return b; 
+        -:   43:}

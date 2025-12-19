@@ -1,9 +1,9 @@
 #pragma once
 #include <stdbool.h>
 typedef enum {
-    panel = 0,     
-    brick = 1,     
-    monolit = 2 
+    panel,  
+    brick,
+    monolit, 
 } building_type;
 typedef struct {
     char developer[100];       
