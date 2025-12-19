@@ -4,7 +4,7 @@
 #include <time.h>
 #include "vector.h"
 include "generation_test.h"
-#define assert(condition) assert_((condition), #condition, __FILE__, __LINE__)
+#define assert(func) assert_((func), #func, __FILE__, __LINE__)
 void test_building(building* b){
     assert(b!=0);
     assert(b->developer!='\0');
