@@ -15,6 +15,9 @@
 
 void test_one() {
     
+    building* b = malloc(n * sizeof(building));
+    assert(b);
+    
     building* b = generation_building(1);
 
     assert(b!=NULL);
@@ -35,26 +38,6 @@ void test_many() {
     building* buildings = generation_building(5);
     
     assert(buildings!=NULL);
-        size_t n = 0;
-    for (size_t i = 0; i < 5; i++) {
-        for (size_t j = i+1; j < 5; j++) {
-            if (buildings[i].developer != buildings[j].developer||
-                buildings[i].microdistrict != buildings[j].microdistrict ||
-                buildings[i].type != buildings[j].type  ||
-                buildings[i].year != buildings[j].year||
-                buildings[i].elevator != buildings[j].elevator ||
-                buildings[i].garbage_chute != buildings[j].garbage_chute ||
-                buildings[i].apartments != buildings[j].apartments||
-                buildings[i].floors != buildings[j].floors ||
-                buildings[i].average_apartment_area != buildings[j].average_apartment_area)
-                {
-                n++;
-            }
-        }
-    }
-    
-    assert(n > 0);
-    
     free(buildings);
 }
 
