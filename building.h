@@ -1,5 +1,4 @@
-#ifndef  BUILDING_H
-#define  BUILDING_H
+#pragma once
 #include <stdbool.h>
 typedef enum {
     panel = 0,     
@@ -17,5 +16,3 @@ typedef struct {
     int floors;         
     double average_apartment_area; 
 } building;
-
-#endif

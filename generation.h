@@ -1,7 +1,5 @@
-#ifndef  GENERATION_H
-#define  GENERATION_H
+#pragma once
 #include "building.h"
 #include "vector.h"
 void generation_building(vector* v,int n);
 
-#endif

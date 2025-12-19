@@ -1,5 +1,4 @@
-#ifndef VECTOR_H
-#define VECTOR_H
+#pragma once
 #include "building.h"
 typedef struct {
     building* data;
@@ -23,4 +22,3 @@ void vector_swap(vector* v, int i, int j);
 void vector_clear(vector* v) ;
 void vector_from_array(vector* v, building* array, int n) ;
 building* vector_to_array(vector* v);
-#endif
