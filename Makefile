@@ -7,24 +7,24 @@ ARFLAGS = rcs
 
 all: test.exe run
 
-generation.o: generation.c generation.h
-	$(CC) -c generation.c -o generation.o $(CFLAGS)
+vector.o: vector.c vector.h
+	$(CC) -c vector.c -o vector.o $(CFLAGS)
 
-libgeneration.a: generation.o
-	$(AR) $(ARFLAGS) libgeneration.a generation.o
+libgeneration.a: vector.o
+	$(AR) $(ARFLAGS) libgeneration.a vector.o
 
 assert.o: assert.c assert.h
 	$(CC) -c assert.c -o assert.o
 
-generation_tests.o: generation_tests.c generation.h assert.h
-	$(CC) -c generation_tests.c -o generation_tests.o $(CFLAGS)
+vector_tests.o: vector_tests.c vector.h assert.h
+	$(CC) -c vector_tests.c -o vector_tests.o $(CFLAGS)
 
-test.exe: generation_tests.o assert.o libgeneration.a
-	$(CC) generation_tests.o assert.o -L. -lgeneration $(LDFLAGS) -o test.exe
+test.exe: vector_tests.o assert.o libgeneration.a
+	$(CC) vector_tests.o assert.o -L. -lgeneration $(LDFLAGS) -o test.exe
 
 run: test.exe
 	./test.exe
-	gcov generation.c
+	gcov vector.c
 	lcov -c -d . -o cov.info
 	genhtml cov.info -o report
 
