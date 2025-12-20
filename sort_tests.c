@@ -35,7 +35,7 @@ void test_sort_one() {
     vector v;
     vector_init(&v);
     
-    building b1 = create_test_building("Company", "Center", 1, 2000, 1, 1, 100, 10, 50.0);
+    building b1 = create_test_building("AAA", "Center", 1, 2000, 1, 1, 100, 10, 50.0);
     vector_push_back(&v, &b1);
 
     bubble_sort(&v, compare_buildings_inc);
