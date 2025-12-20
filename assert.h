@@ -1,4 +1,5 @@
 #pragma once
+#include <stddef.h>
 int assert_fail(const char* expr, const char* file, size_t line);
 int assert_true(const char* expr, const char* file, size_t line);
 int assert_(int function, const char* expr, const char* file, size_t line);

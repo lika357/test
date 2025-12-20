@@ -35,5 +35,5 @@ int compare_buildings_inc(const building* a, const building* b) {
 }
 
 int compare_buildings_dec(const building* a, const building* b) {
-    return compare_buildings_asc(b, a);
+    return compare_buildings_inc(b, a);
 }
