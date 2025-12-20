@@ -27,7 +27,7 @@ building* generation_building(size_t n) {
     
     srand(time(NULL));
     
-    for (int i = 0; i < n; i++) {
+    for (size_t i = 0; i < n; i++) {
         strcpy(b[i].developer, dev[rand() % 15]);
         strcpy(b[i].microdistrict, district[rand() % 15]);
         b[i].type = rand() % 3;
