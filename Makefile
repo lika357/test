@@ -1,18 +1,36 @@
+
 CC = gcc
-CFLAGS = -Wall -Wextra -std=c99 -g -O0
-TARGET = a.exe
-SOURCES = main.c 
-OBJECTS = $(SOURCES:.c=.o)
+CFLAGS = -Wall -Wextra -fprofile-arcs -ftest-coverage
+LDFLAGS = -lgcov -coverage
+AR = ar
+ARFLAGS = rcs
 
-.PHONY: all clean
+all: test.exe run
 
-all: $(TARGET)
+generation.o: generation.c generation.h
+	$(CC) -c generation.c -o generation.o $(CFLAGS)
 
-$(TARGET): $(OBJECTS)
-	$(CC) $(OBJECTS) -o $(TARGET)
+libgeneration.a: generation.o
+	$(AR) $(ARFLAGS) libgeneration.a generation.o
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+assert.o: assert.c assert.h
+	$(CC) -c assert.c -o assert.o
+
+generation_tests.o: generation_tests.c generation.h assert.h
+	$(CC) -c generation_tests.c -o generation_tests.o $(CFLAGS)
+
+test.exe: generation_tests.o assert.o libgeneration.a
+	$(CC) generation_tests.o assert.o -L. -lgeneration $(LDFLAGS) -o test.exe
+
+run: test.exe
+	./test.exe
+	gcov generation.c
+	lcov -c -d . -o cov.info
+	genhtml cov.info -o report
 
 clean:
-	del /f /q $(OBJECTS) $(TARGET)
+	rm -f *.o *.exe *.a *.gcov *.gcda *.gcno
+	rm -rf report
+	rm -f cov.info
+
+.PHONY: all clean run

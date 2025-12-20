@@ -1,5 +1,6 @@
 
 *.exe
+*.txt
 test.exe
 tests.exe
 a.exe

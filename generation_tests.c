@@ -15,9 +15,6 @@
 
 void test_one() {
     
-    building* b = malloc(n * sizeof(building));
-    assert(b);
-    
     building* b = generation_building(1);
 
     assert(b!=NULL);
