@@ -27,7 +27,6 @@ void test_vector_init() {
     assert(vector_size(&v) == 0);
     assert(v.max == 0);
 }
-
 void test_vector_push_back() {
     vector v;
     vector_init(&v);
@@ -84,6 +83,9 @@ void test_vector_insert() {
     
     vector_insert(&v, 1, &b2);
     assert(vector_size(&v) == 3);
+    assert(v.max == 4);
+
+
     
     assert(strcmp(vector_get(&v, 0)->developer, "developer1") == 0);
     assert(strcmp(vector_get(&v, 1)->developer, "developer2") == 0);
@@ -91,7 +93,28 @@ void test_vector_insert() {
     
     vector_clear(&v);
 }
-
+void test_vector_insert1() {
+    vector v;
+    vector_init(&v);
+    
+    building b1 = test_building(1);
+    building b2 = test_building(2);
+    building b3 = test_building(3);
+    building b4 = test_building(4);
+    building b5 = test_building(5);
+    
+    vector_push_back(&v, &b1);
+    vector_push_back(&v, &b3);
+    vector_push_back(&v, &b4);
+    vector_push_back(&v, &b5);
+    
+    
+    vector_insert(&v, 1, &b2);
+    assert(vector_size(&v) == 5);
+    assert(v.max > 4);
+    
+    vector_clear(&v);
+}
 void test_vector_remove() {
     vector v;
     vector_init(&v);
@@ -171,11 +194,6 @@ void test_vector_begin_end() {
     assert(begin != NULL);
     assert(end != NULL);
     assert(end - begin == 5);
-    
-    building* first = begin;
-    building* second = vector_next(&v, first); 
-    assert(second != NULL);
-    assert(second == begin + 1);
 
     vector_clear(&v);
 }
@@ -242,6 +260,7 @@ int main() {
     test_vector_array();
     test_vector_null();
     test_vector_resize();
+    test_vector_insert1();
     printf("успешных проверок: %zu\n", get_true_tests());
     printf("неудачных проверок: %zu\n", get_failed_tests());
     

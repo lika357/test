@@ -13,10 +13,20 @@
 #include "assert.h"
 #include <stdio.h>
 
+
+void test_ZERO() {
+    
+    building* b = generation_building(0xffffffffffffffff);
+    // assert(generation_building(0)==NULL);
+    assert(b==NULL);
+    
+    // free(b);
+}
+
 void test_one() {
     
     building* b = generation_building(1);
-
+    // assert(generation_building(1)!=NULL);
     assert(b!=NULL);
     assert(b[0].developer[0] != '\0');
     assert(b[0].microdistrict[0] != '\0');
@@ -51,6 +61,7 @@ int main() {
     test_one();
     test_many();
     test_zero();
+    test_ZERO();
     printf("успешных проверок: %zu\n", get_true_tests());
     printf("неудачных проверок: %zu\n", get_failed_tests());
     

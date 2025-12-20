@@ -24,14 +24,7 @@ building* vector_begin(vector* v) {
 building* vector_end(vector* v) {
     return v->data + v->size;
 }
-building* vector_next(vector* v, building* current) {
-    if (current == vector_end(v) - 1) return NULL;
-    return current + 1;
-}
-building* vector_to(vector* v, building* current) {
-    if (current == vector_begin(v)) return NULL;
-    return current - 1;
-}
+
 static void vector_resize(vector* v, int new_max) {
     building* new_data = (building*)malloc(new_max * sizeof(building));
     for (int i = 0; i < v->size; i++) {
